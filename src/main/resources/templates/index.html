@@ -11,13 +11,14 @@
 <p th:text="|Number of posts: ${entries.size()}|">NUMBER OF ENTRIES</p>
 
 <div th:each="entry : ${entries}">
-    <h2 th:text="${entry.title}">TITLE</h2>
+    <h2>
+        <a th:href="@{/blog-entries/{id}(id=${entry.id})}" th:text="${entry.title}">TITLE</a>
+    </h2>
     <p>
         Author: <span th:text="${entry.author}">AUTHOR</span>
         |
         Created: <span th:text="${entry.created}">CREATED</span>
     </p>
-    <p th:text="${entry.content}">CONTENT</p>
 </div>
 
 </body>
