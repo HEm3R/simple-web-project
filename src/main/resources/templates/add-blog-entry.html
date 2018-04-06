@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Simple Web Project: Add Blog Entry</title>
+</head>
+<body>
+
+<h1>Add Blog Entry</h1>
+
+<div>
+    <form action="#" th:action="@{/blog-entries}" th:object="${entry}" method="post">
+        <p>Title: <input type="text" th:field="*{title}" /></p>
+        <p>Author: <input type="text" th:field="*{author}" /></p>
+        <p>Content: <textarea th:field="*{content}"></textarea></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+</div>
+</body>
+</html>

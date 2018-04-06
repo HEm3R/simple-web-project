@@ -10,21 +10,25 @@ import java.util.Map;
 
 public final class BlogRepository {
 
+    private static int sequenceId = 0;
+
     private BlogRepository() {
         // static repository, do not initialize
     }
 
-    private static Map<String, BlogEntry> entries = new HashMap<>();
+    private static Map<Integer, BlogEntry> entries = new HashMap<>();
 
     public static void add(BlogEntry entry) {
-        entries.put(entry.getId(), entry);
+        Integer id = sequenceId++;
+        entry.setId(id);
+        entries.put(id, entry);
     }
 
     public static List<BlogEntry> getAll() {
-        return Collections.unmodifiableList(new ArrayList(entries.values()));
+        return Collections.unmodifiableList(new ArrayList<>(entries.values()));
     }
 
-    public static BlogEntry get(String id) {
+    public static BlogEntry get(Integer id) {
         return entries.get(id);
     }
 }
